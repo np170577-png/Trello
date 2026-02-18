@@ -1,6 +1,13 @@
 package pages;
 
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import javax.lang.model.element.Element;
+import java.time.Duration;
 
 public class BasePage {
     static WebDriver driver;
@@ -17,5 +24,21 @@ public class BasePage {
         }
     }
 
+    public void clickWait(WebElement element){
+       new WebDriverWait(driver, Duration.ofSeconds(5)).until(ExpectedConditions.
+               elementToBeClickable(element)).click();
+    }
 
-}
+    public boolean validateTextInElement(WebElement element, String text){
+        try {
+            return new WebDriverWait(driver, Duration.ofSeconds(5))
+                    .until(ExpectedConditions.textToBePresentInElement(element, text));
+        }catch(NoSuchFieldError| TimeoutException e) {
+            System.out.println("created exception");
+            return false;
+        }
+        }
+
+    }
+
+
