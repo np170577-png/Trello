@@ -11,7 +11,7 @@ import pages.LoginPage;
 
 public class LoginTests extends AppManager {
 
-    @Test
+    @Test(groups = "smoke")
     public void loginPositiveTest() {
         User user = User.builder()
                 .email("np170577@gmail.com")
@@ -22,7 +22,7 @@ public class LoginTests extends AppManager {
         Assert.assertTrue(new BoardsPage(getDriver()).validateURL("boards"));
     }
 
-    @Test
+    @Test(groups = "smoke")
     public void loginNegativeTest() {
         User user = User.builder()
                 .email("np170577@gmail.com")

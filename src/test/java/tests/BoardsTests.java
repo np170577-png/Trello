@@ -21,7 +21,7 @@ import java.util.Random;
 
 public class BoardsTests extends AppManager {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void login() {
         User user = User.builder()
                 .email("np170577@gmail.com")
@@ -32,7 +32,7 @@ public class BoardsTests extends AppManager {
 
     }
 
-    @Test
+    @Test(groups = "smoke")
 
     public void createNewBoardPositiveTest() {
         int i = new Random().nextInt(1000);
@@ -47,7 +47,7 @@ public class BoardsTests extends AppManager {
     }
 
 
-    @Test
+    @Test(groups = "smoke")
     public void createNewBoardNegative_EmptyTitleTest() {
         Board board = Board.builder()
                 .boardTitle("")

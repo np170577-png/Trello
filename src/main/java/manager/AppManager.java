@@ -21,7 +21,7 @@ public class AppManager {
         return driver;
     }
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setup(Method method){
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--lang=en");
@@ -32,7 +32,7 @@ public class AppManager {
     }
 
 
-    @AfterMethod(enabled = false)
+    @AfterMethod(alwaysRun = true, enabled = false)
     public void tearDown(Method method){
         if(driver!=null){
             driver.quit();

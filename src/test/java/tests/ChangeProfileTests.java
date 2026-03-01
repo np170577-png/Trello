@@ -11,13 +11,14 @@ import pages.AtlassianProfilePage;
 import pages.BoardsPage;
 import pages.HomePage;
 import pages.LoginPage;
+import utils.RetryAnalyzer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChangeProfileTests extends AppManager {
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void login(){
         User user = User.builder()
                 .email("np170577@gmail.com")
@@ -27,7 +28,7 @@ new HomePage(getDriver()).clickBtnLogin();
 new LoginPage(getDriver()).login(user);
     }
 
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class, groups = "smoke")
 
     public void ChangeFilePhoto(){
 new BoardsPage(getDriver()).openMyAccount();
